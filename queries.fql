@@ -1,0 +1,82 @@
+query {
+  allUsers(_size:10){
+    data{
+      _id
+      nombre
+    }
+  }
+}
+
+query{
+  allComercios(_size: 10){
+    data{
+      _id
+      nombre
+    }
+  }
+}
+
+query{
+  allComerciosByStatus(status: true){
+    data{
+      _id
+      nombre
+    }
+  }
+}
+
+query{
+  allTickets(_size: 10){
+    data{
+      usuario{
+        _id
+        edad
+      }
+      comercio{
+        _id
+        nombre
+      }
+      total
+      consumo{
+        idproducto
+        titulo
+        precio
+      }
+    }
+  }
+}
+
+query{
+  allProducts(_size:10){
+    data{
+      _id
+      nombre
+      precio
+    }
+  }
+}
+
+query{
+  userByEmail(email: "danilockthar@gmail.com"){
+    data{
+      _id
+      nombre
+    }
+  }
+}
+
+query{
+  comercioBySlug(slug: "poseidon-restobar"){
+    data{
+      _id
+      nombre
+      productos{
+        nombre
+      }
+      ticket{
+        _id
+        total
+      }
+    }
+  }
+}

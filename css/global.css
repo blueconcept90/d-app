@@ -1,0 +1,22 @@
+
+body{
+    position: relative;
+    margin: 0 !important;
+    padding:0;
+}
+ul li:before {
+    content: ' ' !important;
+    }
+    /* .react-multi-carousel-item {
+        margin:10px;
+    } */
+    
+@media only screen 
+and (max-width: 600px){
+    
+    body{
+    padding:0px 0px 0px 0px;
+    position:relative;
+    width:100vw !important;
+    }
+}
