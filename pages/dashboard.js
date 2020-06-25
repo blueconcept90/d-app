@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {motion} from 'framer-motion'
 import Layout from '../components/Layout'
 import Destacados from '../components/Destacados'
@@ -32,9 +32,31 @@ const responsivedos = {
 
  
 const Dashboard = () => {
-const [value, setValue] = useState();
 
-const bares = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', 'bar9', 'bar10']
+    const [value, setValue] = useState();
+    const [geoInfo, setGeoInfo] = useState()
+
+    const bares = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', 'bar9', 'bar10']
+
+    useEffect( ()=> {
+        async function getGeoInfo() {
+            let response = await fetch('https://ipapi.co/json/', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'GET',
+            });
+            response = await response.json()
+            setGeoInfo(response)
+        }
+        getGeoInfo()
+    }, [])
+
+    useEffect(() => {
+        console.log(geoInfo)    
+    }, [geoInfo])
+
  
     return (
         <motion.div>
@@ -54,7 +76,7 @@ const bares = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', '
                          return(
                              <Link href="/comercios/[slug]" as="/comercios/abc">
                              <D.LocalesWrapper key={index}>
-                                <D.LocalWrapp key={index} background={item}></D.LocalWrapp>
+                                <D.LocalWrapp background={item}></D.LocalWrapp>
                                 <D.Pe> Resto Lorem </D.Pe>
                             </D.LocalesWrapper>
                             </Link>
@@ -73,7 +95,7 @@ const bares = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', '
                      {bares.reverse().map((item, index) => {
                          return(
                              <D.LocalesWrapper key={index}>
-                                <D.LocalWrapp key={index} background={item}></D.LocalWrapp>
+                                <D.LocalWrapp background={item}></D.LocalWrapp>
                                 <D.Pe> Bares Lorem </D.Pe>
                             </D.LocalesWrapper>
                          )
@@ -91,7 +113,7 @@ const bares = ['bar1', 'bar2', 'bar3', 'bar4', 'bar5', 'bar6', 'bar7', 'bar8', '
                      {bares.map((item, index) => {
                          return(
                              <D.LocalesWrapper key={index}>
-                                <D.LocalWrapp key={index} background={item}></D.LocalWrapp>
+                                <D.LocalWrapp background={item}></D.LocalWrapp>
                                 <D.Pe> Favoritos  </D.Pe>
                             </D.LocalesWrapper>
                          )
