@@ -80,3 +80,16 @@ query{
     }
   }
 }
+
+
+mutation{
+ updateComercio(id: 269317968890954240, data: {
+  direccion: "Calle Suiza 232"
+}){
+    _id
+    nombre
+    telefono
+    ciudad
+    pais
+  }
+}
