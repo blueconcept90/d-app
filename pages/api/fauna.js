@@ -1,6 +1,6 @@
 const faunadb = require('faunadb');
 
-const secret = 'fnADvJ5QvfACACNpsYIHM7vdvpeS4eBHZrgsek4w';
+const secret = 'SECRET-FAUNA-ADMIN-KEY';
 
 
 const q = faunadb.query;
